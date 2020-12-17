@@ -1,0 +1,26 @@
+* {
+    font-family: sans-serif;
+}
+
+body {
+    margin: 0px;
+}
+
+#search-window {
+    background-color: grey;
+}
+
+h1 {
+    text-align: center;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    color: white;
+} 
+
+header {
+    height: 100px;
+    background-color: gray;
+}
