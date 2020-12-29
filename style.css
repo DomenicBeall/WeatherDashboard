@@ -24,3 +24,16 @@ header {
     height: 100px;
     background-color: gray;
 }
+
+.search-col {
+    margin: 20px;
+}
+
+.list-group {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.details-col {
+    margin-top: 20px;
+}
