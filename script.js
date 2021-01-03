@@ -1,5 +1,6 @@
 var fiveDayForecastDiv = $("#forecast-cards");
 var searchHistoryListDiv = $("#search-history");
+var uvIndexDiv = $("#uvIndexDiv");
 
 const API_KEY = "be99c505fb2b5702ed4d54b0b89dda7b";
 
@@ -40,7 +41,18 @@ function searchCityWeather() {
             var uvUrl = "http://api.openweathermap.org/data/2.5/uvi?lat=" + response.coord.lat + "&lon=" + response.coord.lon + "&appid=" + API_KEY;
 
             $.ajax(uvUrl).then(function(response) {
-                $("#uvIndexDiv").text(response.value);
+                var uvValue = response.value;
+                
+                uvIndexDiv.text(uvValue);
+                
+                if (uvValue >= 8)
+                    uvIndexDiv.css("background-color", "red");
+                else if (uvValue >= 6)
+                    uvIndexDiv.css("background-color", "orange");
+                else if (uvValue >= 3)
+                    uvIndexDiv.css("background-color", "yellow");
+                else
+                    uvIndexDiv.css("background-color", "green");
             });
         },
         error : function (xhr, ajaxOptions, thrownError) {
