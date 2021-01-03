@@ -24,21 +24,30 @@
         </header>
 
         <div class="row">
+
+            <!-- This column holds the search bar and history -->
             <div class="col-md-3">
                 <div class="search-col">
                     <h3>Search for a City:</h3>
+
+                    <!-- Search bar -->
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="Enter city name..." aria-label="Search" id="cityInput">
                         <button class="btn btn-primary" type="button" id="searchButton">
                             <i class="fas fa-search"></i>
                         </button>
                     </div>
+                    
                     <ul class="list-group" id="search-history">
                         <!-- Previous search entries will go here -->
                     </ul>
                 </div>
             </div>
+
+            <!-- This column holds all of the generated information -->
             <div class="col-md-9">
+
+                <!-- This section is for the current weather information -->
                 <div class="card details-col">
                     <div class="card-body">
                         <h2><span id="cityNameDiv">Enter a city to search</span><img id="wicon" src=""></h2>
@@ -50,6 +59,8 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- This section is for the 5 day forecast -->
                 <div class="details-col">
                     <div id="5DayDiv">
                         <h2>5-Day Forecast</h2>
@@ -61,5 +72,7 @@
             </div>
         </div>
     </body>
+
+    <!-- Custom javascript -->
     <script src="script.js"></script>
 </html>

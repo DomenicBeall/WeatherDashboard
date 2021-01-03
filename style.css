@@ -27,11 +27,7 @@ header {
     background-color: rgb(39, 39, 39);
 }
 
-.search-col {
-    margin: 20px;
-}
-
-.details-col {
+.search-col, .details-col {
     margin: 20px;
 }
 
