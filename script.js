@@ -1,29 +1,43 @@
+// Get and store some of the more regularly accessed divs, for readability more than efficiency
 var fiveDayForecastDiv = $("#forecast-cards");
 var searchHistoryListDiv = $("#search-history");
 var uvIndexDiv = $("#uvIndexDiv");
 
+// Stores the key to the weather API
 const API_KEY = "be99c505fb2b5702ed4d54b0b89dda7b";
+
 
 init();
 
+// Adds an event listener to the search button and renders the search history
 function init() {
     $("#searchButton").click(searchCityWeather);
+    $("#weatherInformation").hide();
+    $("#5DayDiv").hide();
+    $("#wicon").hide();
 
     renderSearchHistory();
 }
 
+// Gets and displays weather data for the city in the search field
 function searchCityWeather() {
     // Assign a variable to the selected city name
     var cityName = $("#cityInput").val();
 
-    // Send an ajax request getting the weather information
+    // Store the url to be queried
     var url = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + API_KEY;
-    
-    
+
+    // Send an ajax request getting the weather information
     $.ajax({
         type: "GET", 
-        url: url, 
+        url: url,
+        
+        // This function is ran if the ajax request succeeds
         success: function(response) {
+            $("#weatherInformation").show();
+            $("#5DayDiv").show();
+            $("#wicon").show();
+
             addCityToSearchHistory(cityName);
 
             var date = new Date(response.dt * 1000);
@@ -55,12 +69,15 @@ function searchCityWeather() {
                     uvIndexDiv.css("background-color", "green");
             });
         },
+
+        // This function runs if the ajax request returns an error
         error : function (xhr, ajaxOptions, thrownError) {
-            $("#cityNameDiv").text("We couldn't find a city with the name " + cityName);
-            $("#temperatureDiv").text("");
-            $("#humidityDiv").text("");
-            $("#windSpeedDiv").text("");
-            $("#uvIndexDiv").text("");
+
+            // Clear all of the weather information divs
+            $("#cityNameDiv").text("We couldn't find a city with the name: \"" + cityName + "\"");
+            $("#weatherInformation").hide();
+            $("#5DayDiv").hide();
+            $("#wicon").hide();
         }
     });
 
